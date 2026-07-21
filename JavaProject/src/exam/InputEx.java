@@ -29,6 +29,8 @@ public class InputEx {
 		System.out.println("학년 : " + year);
 		System.out.println("점수 : " + score);
 		System.out.println("학점 : " + grade);
+		
+		sc.close();
 	}
 
 }
