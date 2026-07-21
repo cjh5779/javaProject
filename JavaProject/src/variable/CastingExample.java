@@ -13,7 +13,6 @@ public class CastingExample {
 		
 		double doubleValue = 3.14;
 		intValue = (int)doubleValue;
-		
 		System.out.println(intValue); // 데이터 손실 발생 - 소수점 이하 삭제
 	}
 
