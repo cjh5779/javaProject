@@ -20,6 +20,8 @@ public class BreakEx {
 				break;
 			} 
 		}
+		
+		sc.close();
 	}
 
 }
