@@ -27,6 +27,7 @@ public class ArrayInputEx1 {
 		
 		System.out.println("\n최대값 : " + max);
 		
+		sc.close();
 	}
 
 }
