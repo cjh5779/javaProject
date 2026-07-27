@@ -30,10 +30,10 @@ public class CarMain {
 		
 		int x = 0;
 		int y = 0;
-		y+=x;
+		y += x;
 		
 		// 객체 인스턴스 삭제 - 참조주소를 삭제
-		c1=null; // 이전 참조 객체는 삭제됨
+		c1 = null; // 이전 참조 객체는 삭제됨
 		
 	}
 
