@@ -1,7 +1,6 @@
 package classInfo;
 
 public class FinalEx {
-
 	public static void main(String[] args) {
 		// final 필드 사용
 		Final f1 = new Final("123456789-56789","계백");

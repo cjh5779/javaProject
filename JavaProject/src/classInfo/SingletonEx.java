@@ -1,7 +1,6 @@
 package classInfo;
 
 public class SingletonEx {
-
 	public static void main(String[] args) {
 		// Singleton 클래스 인스턴스 생성
 		// Singleton st = new Singleton();//생성자 private

@@ -1,7 +1,6 @@
 package classInfo;
 
 public class ConstructorEx {
-
 	public static void main(String[] args) {
 		// 여러 형태의 생성자 사용 예시
 		// 생성자가 없는 클래스 인스턴스 생성

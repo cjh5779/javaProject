@@ -1,7 +1,6 @@
 package classInfo;
 
 public class MainEx {
-
 	public static void main(String[] args) {
 		// 객체 변수 선언 및 인스턴스 생성
 		Rectangle rec = new Rectangle();
