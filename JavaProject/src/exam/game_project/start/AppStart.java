@@ -20,6 +20,9 @@ public class AppStart {
 		// 선택된 메뉴의 기능을 수행
 		
 		// 종료는 종료 메뉴를 선택할 때 종료
+		
+		AppInfo appInfo = new AppInfo();
+		appInfo.printInfo();
 	}
 
 }
