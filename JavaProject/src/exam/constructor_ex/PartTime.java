@@ -1,9 +1,10 @@
 package exam.constructor_ex;
 
 public class PartTime extends Worker {
-    int hours; 
-    int unitPrice;
+    private int hours; 
+    private int unitPrice;
 
+    // 상속 받은 클래스인 subclass의 객체인스턴스 생성하면, superclass의 인스턴스도 생성
     public PartTime(String joominNo, String name, int unitPrice, int hours) {
         super(joominNo, name);
         this.unitPrice = unitPrice;

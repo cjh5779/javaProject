@@ -1,8 +1,8 @@
 package exam.constructor_ex;
 
 public class Worker {
-	String joominNo;
-	String name;
+	private String joominNo;
+	private String name;
 	
 	public Worker(String joominNo, String name) {
 		this.joominNo = joominNo;
