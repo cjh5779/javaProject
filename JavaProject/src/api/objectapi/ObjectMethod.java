@@ -23,5 +23,10 @@ public class ObjectMethod {
 		// 배열복제시 활용했음
 		
 		// Object.finalize() : 객체 소멸자, GC는 객체를 소멸시키기 직전 finalize()를 호출
+		// 기본적으로 실행내용 없음, 개발자가 객체가 소멸되기 전에 실행할 코드가 있다면 Object.finalize() 재정의
+		
+		// System.gc() : Garbage Collector 호출, 바로 호출 되지는 않고 메모리 부족하거나 CPU가 한가할 때 JVM에 의해 실행됨
+		// finalize() : 언제 호출될지 모름
+		// 메소드는 있지만 될 수 있으면 사용하지 말 것
 	}
 }
