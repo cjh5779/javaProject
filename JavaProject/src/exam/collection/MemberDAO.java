@@ -6,7 +6,6 @@ import java.util.List;
 public class MemberDAO implements IMemberDAO {
 	private List<MemberDTO> listData = new ArrayList<>(); // 회원 정보 저장소로 활용
 	
-	
 	@Override
 	public void insertMember(MemberDTO dto) { // array
 		// 회원가입로직 : 동일 id가 있는지 확인해서 있으면 회원가입 불가, 없으면 회원가입
@@ -28,26 +27,41 @@ public class MemberDAO implements IMemberDAO {
 
 	@Override
 	public void deleteMember(String memId) {
-		// TODO Auto-generated method stub
+		MemberDTO target = searchMember(memId);
+		
+		if(target != null) {
+			listData.remove(target);
+			System.out.println("회원정보가 영구 삭제되었습니다");
+		} else {
+			System.out.println("해당 id 정보가 없습니다");
+		}
 		
 	}
 
 	@Override
 	public ArrayList<MemberDTO> getAllMember() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList<MemberDTO>) listData;
 	}
 
 	@Override
 	public void updateMember(MemberDTO dto) {
-		// TODO Auto-generated method stub
+		MemberDTO target = searchMember(dto.getMemId());
+		
+		if(target != null) {
+			target.setMemPass(dto.getMemPass());
+			target.setMemName(dto.getMemName());
+			target.setMemPhone(dto.getMemPhone());
+			target.setMemAddress(dto.getMemAddress());
+			System.out.println("회원 정보 수정이 완료되었습니다");
+		} else {
+			System.out.println("해당 id 정보가 없습니다");
+		}
 		
 	}
 
 	@Override
 	public MemberDTO searchMember(String memId) {
-		// TODO Auto-generated method stub
-		return null;
+		return listData.stream().filter(member->member.getMemId().equals(memId)).findFirst().orElse(null);
 	}
 
 }
