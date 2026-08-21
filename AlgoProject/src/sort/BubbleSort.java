@@ -7,7 +7,7 @@ public class BubbleSort {
 	}
 	
 	static void bubbleSort(int[] arr) {
-		int temp;
+		int temp; 
 		
 		for(int i=0; i<arr.length; i++) {
 			for(int j=0; j<arr.length-1-i; j++) { // 라운드 순회마다 가장 큰 원소가 하나씩 결정됨, 비교가 줄어듬
