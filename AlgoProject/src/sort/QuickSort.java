@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.Arrays;
+
 /*
  * 퀵정렬
  * pivot이라는 기준값을 결정해서 pivot 기준 두개의 부분 리스트로 나눔
@@ -80,6 +82,8 @@ public class QuickSort {
 		 * pivot으로 설정했던 위치(a[left])의 원소와 lo가리키는 원소를 교환하고 lo지점을 pivot위치로 결정
 		 */
 		swap(a, left, lo);
+		
+		System.out.printf("파티션 범위(인덱스 %d~%d) - 피벗 [%d] 확정 후 : %s\n", left, right, a[lo], Arrays.toString(a));
 		
 		return lo;		
 	}
