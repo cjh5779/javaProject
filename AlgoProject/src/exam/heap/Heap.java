@@ -1,4 +1,4 @@
-package heap;
+package exam.heap;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -102,7 +102,7 @@ public class Heap<E> {
 			Object parentVal = array[parent]; // 부모노드 값 추출
 
 			// 타겟노드 값과 부모노드 값 비교 : 1 또는 0은 기준 객체가 더 큼
-			if (comp.compare(target, (E) parentVal) >= 0) {
+			if (comp.compare(target, (E) parentVal) <= 0) {
 				// 교환 필요 없이 현재 위치에 저장
 				break;
 			}
@@ -127,7 +127,7 @@ public class Heap<E> {
 			Object parentVal = array[parent]; // 부모노드 값 추출
 
 			// 타겟노드 값과 부모노드 값 비교 : 1 또는 0은 기준 객체가 더 큼
-			if (comp.compareTo((E) parentVal) >= 0) {
+			if (comp.compareTo((E) parentVal) <= 0) {
 				// 교환 필요 없이 현재 위치에 저장
 				break;
 			}
@@ -190,13 +190,13 @@ public class Heap<E> {
 			Object childVal = array[child]; // 타겟과 비교할 값
 
 			// 왼쪽 자식노드보다 오른쪽 자식노드 값이 더 크면
-			if (right <= size && comp.compare((E) childVal, (E) array[right]) > 0) { // childVal 값이 큼
+			if (right <= size && comp.compare((E) childVal, (E) array[right]) < 0) { // childVal 값이 큼
 				child = right;
 				childVal = array[child];
 			}
 
 			// target 값이 자식노드 값보다 작으면 반복문을 종료
-			if (comp.compare(target, (E) childVal) <= 0) {
+			if (comp.compare(target, (E) childVal) >= 0) {
 				break;
 			}
 
@@ -234,13 +234,13 @@ public class Heap<E> {
 			Object childVal = array[child]; // 타겟과 비교할 값
 
 			// 왼쪽 자식노드보다 오른쪽 자식노드 값이 더 크면
-			if (right <= size && ((Comparable<? super E>) childVal).compareTo((E) array[right]) > 0) { // childVal 값이 큼
+			if (right <= size && ((Comparable<? super E>) childVal).compareTo((E) array[right]) < 0) { // childVal 값이 큼
 				child = right;
 				childVal = array[child];
 			}
 
 			// target 값이 자식노드 값보다 작으면 반복문을 종료
-			if (comp.compareTo((E) childVal) <= 0) {
+			if (comp.compareTo((E) childVal) >= 0) {
 				break;
 			}
 
@@ -280,5 +280,19 @@ public class Heap<E> {
 	
 	public Object[] toArray() {
 		return Arrays.copyOf(array, size+1);
+	}
+	
+	public Object[] sort(E[] inputArr) {
+		for(int i=0; i<inputArr.length; i++) {
+			this.add(inputArr[i]);
+		}
+		
+		Object[] sortedArray = new Object[inputArr.length];
+		
+		for (int i = inputArr.length - 1; i >= 0; i--) {
+			sortedArray[i] = this.remove();
+		}
+		
+		return sortedArray;
 	}
 }
