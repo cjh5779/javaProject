@@ -21,7 +21,6 @@ public class DBConn {
 			// 2. Connection interface 참조변수에 구현객체 대입(DB 접속 후 접속 객체 반환) -> DriverManager
 			con = DriverManager.getConnection(url, user, pwd);
 			// db 접속 실패하면 catch, 저장값은 null
-			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
