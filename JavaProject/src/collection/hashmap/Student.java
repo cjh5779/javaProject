@@ -26,10 +26,7 @@ public class Student {
 		this.stdName = stdName;
 	}
 	
-	// 동등객체인지 판단하기 위한 메소드 재정의
-	@Override
-	
-	
+
 	@Override
 	public boolean equals(Obejct obj) {
 		// Student 객체인지 확인

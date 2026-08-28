@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 정보 등록</title>
+</head>
+<body>
+    <h2>도서 정보 등록</h2>
+    <form action="bookServlet" method="post">
+        <table>
+            <tr>
+                <td><label for="bookNo">도서번호</label></td>
+                <td><input type="text" id="bookNo" name="bookNo" value="1001"></td>
+            </tr>
+            <tr>
+                <td><label for="title">도서명</label></td>
+                <td><input type="text" id="title" name="title" value="자바"></td>
+            </tr>
+            <tr>
+                <td><label for="author">저자</label></td>
+                <td><input type="text" id="author" name="author" value="홍길동"></td>
+            </tr>
+            <tr>
+                <td><label for="price">가격</label></td>
+                <td><input type="text" id="price" name="price" value="20000"></td>
+            </tr>
+            <tr>
+                <td>발행일</td>
+                <td>
+                    <input type="text" name="year" size="4" value="2021"> 년 
+                    <input type="text" name="month" size="2" value="12"> 월 
+                    <input type="text" name="day" size="2" value="15"> 일
+                </td>
+            </tr>
+            <tr>
+                <td><label for="stock">재고</label></td>
+                <td><input type="text" id="stock" name="stock" value="5"></td>
+            </tr>
+            <tr>
+                <td><label for="pubNo">출판사번호</label></td>
+                <td><input type="text" id="pubNo" name="pubNo" value="1"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">등록</button>
+                    <button type="reset">취소</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
