@@ -6,6 +6,15 @@ public class MemberBean {
 	private String memName;
 	private String memEmail;
 	
+	public MemberBean() {
+		
+	}
+	public MemberBean(String memId, String memPwd, String memName, String memEmail) {
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.memEmail = memEmail;
+	}
 	public String getMemId() {
 		return memId;
 	}
