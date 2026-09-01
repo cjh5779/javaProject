@@ -5,18 +5,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="bean.MemberBean" %>
+<%@ page import="java.util.ArrayList" %> <%-- 수정 1: ArrayList 임포트 추가 --%>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="mB" class="bean.MemberBean"/> <%-- 사용자 정의 클래스를 beans 등록 --%>
+<%-- 현재 코드에서 mB는 사용되지 않으므로 주석 처리하거나 지워도 무방합니다 --%>
+<%-- <jsp:useBean id="mB" class="bean.MemberBean"/> --%> 
 <jsp:useBean id="memberList" class="java.util.ArrayList"/>
 
 <%
 	MemberBean m1 = new MemberBean("son", "1234", "손흥민", "son@test.com");
 	MemberBean m2 = new MemberBean("park", "1234", "박지성", "park@test.com");
 	
-	ArrayList<MemberBean> list = new ArrayList<MemberBean>();
-	
+	// jsp:useBean으로 만든 memberList에 데이터 추가
 	memberList.add(m1);
 	memberList.add(m2);
 %>

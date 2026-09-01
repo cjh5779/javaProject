@@ -9,9 +9,6 @@
 <c:set var="age" value="${20}" scope="page"/>
 <c:set var="height" value="${177}" scope="page"/>
 
-<c:remove var="age"/>
-<c:remove var="height"/>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,10 +16,18 @@
 		<title>c:set 활용 예시</title>
 	</head>
 	<body>
-		id : ${id}<br>
-		pwd : ${pwd}<br>
-		name : ${name}<br>
-		age : ${age}<br>
-		height : ${height}<br>
+		<c:if test="${true}">
+			<h3>이 태그는 if 블럭안에 있습니다. 항상 참인 if 입니다</h3>
+		</c:if>
+		<c:if test="${height>160}">
+			<h3>c:if태그는 else를 사용할 수 없습니다</h3>
+			<h3>${name}의 키는 160보다 큽니다</h3>
+		</c:if>
+		<c:if test="${id=='hong' && pwd=='1234}">
+			<h3>로그인성공</h3>
+		</c:if>
+		<c:if test="${id=='hong2' && pwd=='1234}">
+			<h3>로그인실패</h3>
+		</c:if>
 	</body>
 </html>
