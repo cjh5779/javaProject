@@ -14,16 +14,14 @@
     <h1>게시글 상세 열람</h1>
     <%
 	String S_ID = (String)session.getAttribute("S_ID");
-	System.out.println(S_ID+"id");
 	String S_NAME = (String)session.getAttribute("S_name");
-    System.out.println(S_NAME);	  
     
     if (S_ID != null){
     try
     {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String db_address = "jdbc:oracle:thin:@localhost:1521:xe";
-		String db_username = "SQL_USER";
+		String db_address = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+		String db_username = "sql_select";
 		String db_pwd = "1234";
 		Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
 
@@ -68,7 +66,7 @@
             	    </td>
 					<td>
 					<%					
-					if(){ %>
+					if(S_NAME.equals(name)){ %>
 						<button type="button" value="수정" onClick="location.href='post_modify.jsp?num=<%=result.getString("num") %>'">수정</button>
 						<button type="button" value="삭제" onClick="location.href='post_delete_send.jsp?num=<%=result.getString("num") %>'">삭제</button>
 						<%} %>

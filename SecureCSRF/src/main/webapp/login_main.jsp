@@ -8,7 +8,7 @@
 </head>
 <body>
    <h3>로그인(session)</h3>
-   <form method="post" action="login_action.jsp">
+   <form method="post" action="login_action_csrf.jsp">
    <table>
       <tr><th>아이디</th>
       		<td><input type="text" name="id"/></td></tr>

@@ -9,8 +9,8 @@
 try
 {
 	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String db_address = "jdbc:oracle:thin:@localhost:1521:xe";
-	String db_username = "SQL_USER";
+	String db_address = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+	String db_username = "sql_select";
 	String db_pwd = "1234";
     Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
     String S_NAME = (String)session.getAttribute("S_name");
@@ -22,8 +22,9 @@ try
  	String content = request.getParameter("content");
  	System.out.println(writer);
     String num = request.getParameter("num");
+    String csrf_token = request.getParameter("csrfToken");
     
-	if(S_NAME.equals(writer)){
+	if(S_NAME.equals(writer) && S_csrf.equals(csrf_token)){ // 공격자 csrf 토큰과 일반 사용자 csrf 토큰이 다르기 때문에 공격자에 의해 변조되기는 불가능 함
     
  		PreparedStatement psmt;
 
@@ -32,7 +33,7 @@ try
  	    psmt = connection.prepareStatement(insertQuery);
         
         psmt.setString(1, title);
-        psmt.setString(2, writer);
+        psmt.setString(2, S_NAME);
         psmt.setString(3, content);
         
         psmt.executeUpdate();

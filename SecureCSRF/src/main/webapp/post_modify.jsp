@@ -13,17 +13,17 @@
 <body>
     <h1>글 수정</h1>
     <%
-    
+      // 로그인 증명 있는 경우만 진행
 	  String S_ID = (String)session.getAttribute("S_ID");
-	  System.out.println(S_ID+"id");
 	  String S_name = (String)session.getAttribute("S_name");
+	  String CSRF_TOKEN = (String)session.getAttribute("CSRF_TOKEN");
 	 // System.out.println(S_name);    
     if(S_ID != null){ 
     try
     {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String db_address = "jdbc:oracle:thin:@localhost:1521:xe";
-		String db_username = "SQL_USER";
+		String db_address = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+		String db_username = "sql_select";
 		String db_pwd = "1234";
         Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
         
@@ -40,7 +40,9 @@
         while(result.next())
         {%>
             <form action="post_modify_send.jsp" method="post">
+            <!-- 수정할 게시글 번호 hidden 태그로 전송 받음 -->
             <input type="hidden" name="num" value="<%=result.getInt("num") %>">
+            <input type="hidden" name="csrfToken" value="<%=CSRF_TOKEN %>">
             <table border="1">
                 <tr>
                     <td>작성자</td>

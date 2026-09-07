@@ -163,7 +163,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       <Context docBase="WebTest" path="/WebTest" reloadable="true" source="org.eclipse.jst.jee.server:WebTest"/>
-      <Context docBase="Servelt01" path="/Servelt01" reloadable="true" source="org.eclipse.jst.jee.server:Servelt01"/><Context docBase="JSP01" path="/JSP01" reloadable="true" source="org.eclipse.jst.jee.server:JSP01"/><Context docBase="JSP2" path="/JSP2" reloadable="true" source="org.eclipse.jst.jee.server:JSP2"/><Context docBase="MVCEx" path="/MVCEx" reloadable="true" source="org.eclipse.jst.jee.server:MVCEx"/></Host>
+      <Context docBase="Servelt01" path="/Servelt01" reloadable="true" source="org.eclipse.jst.jee.server:Servelt01"/><Context docBase="JSP01" path="/JSP01" reloadable="true" source="org.eclipse.jst.jee.server:JSP01"/><Context docBase="JSP2" path="/JSP2" reloadable="true" source="org.eclipse.jst.jee.server:JSP2"/><Context docBase="MVCEx" path="/MVCEx" reloadable="true" source="org.eclipse.jst.jee.server:MVCEx"/><Context docBase="SecureCSRF" path="/SecureCSRF" reloadable="true" source="org.eclipse.jst.jee.server:SecureCSRF"/><Context docBase="Hacker" path="/Hacker" reloadable="true" source="org.eclipse.jst.jee.server:Hacker"/></Host>
     </Engine>
   </Service>
 </Server>

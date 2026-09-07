@@ -14,13 +14,16 @@
 	<form action="post_read.jsp" method="get">
 		<h1>게시글 목록</h1>
 		<%
+			// 로그인 성공 후 현재 페이지가 요청되었다면 S_ID 속성값이 있음, 로그인 실패면 null임
+			String S_ID = (String)session.getAttribute("S_ID"); // getAttribute Object 타입 반환
+			System.out.println(S_ID);
 
-			if(){
+			if(S_ID != null){ // URL 통해 직접 접근 금지시키고 로그인 된 경우에만 목록을 출력함
 			try
 			{
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				String db_address = "jdbc:oracle:thin:@localhost:1521:xe";
-				String db_username = "SQL_USER";
+				String db_address = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+				String db_username = "sql_select";
 				String db_pwd = "1234";
 				
 				Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
@@ -67,7 +70,8 @@
 			}
 			
 			} else {
-				
+				// S_ID 없으면 main.html로 재요청
+				response.sendRedirect("main.html");
 			}%>
 	</form>
 </body>

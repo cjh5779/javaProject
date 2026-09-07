@@ -10,8 +10,8 @@
 try
 {
 	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String db_address = "jdbc:oracle:thin:@localhost:1521:xe";
-	String db_username = "SQL_USER";
+	String db_address = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+	String db_username = "sql_select";
 	String db_pwd = "1234";
     Connection connection = DriverManager.getConnection(db_address, db_username, db_pwd);
     
@@ -48,7 +48,7 @@ try
 	
 	psmt.executeUpdate();
 	
-	response.sendRedirect("post_list.jsp");
+	response.sendRedirect("post_list.jsp"); // 게시글 입력 완료 후 목록보기로 재요청
 }
 catch (Exception ex)
 {

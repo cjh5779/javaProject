@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-// 세션값 전체 삭제
+// 세션속성값 전체 삭제
 session.invalidate();
 // 로그아웃 메시지 출력 main.jsp 이동
 %>

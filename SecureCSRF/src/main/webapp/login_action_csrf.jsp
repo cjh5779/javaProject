@@ -2,6 +2,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="java.util.UUID"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,12 +34,9 @@ try
     	String dbpwd = result.getString("mempwd");
     	String dbname = result.getString("memname");
 		// 로그인증명을 위한 session 생성 - 특정 클라이언트와의 연결 확립(session)
-		// session - 서버측에 저장하는 정보, 현재 연결된 특정 클라이언트와의 연결정보가 저장되는 객체
-		// 연결되어 있는 동안 객체는 활성화 됨, 특정 조건에 만족하지 않으면 객체는 제거됨 -> 클라이언트와의 연결이 종료
-		// 클라이언트 요청이 들어오면 세션 객체는 생성됨 -> 클라이언트에게 응답시 쿠키에 session id값을 전송함
-		// 클라이언트 재요청시에 session id값을 서버측으로 전달해야 함 -> 전달된 session id를 활용 로그인 여부를 어플리케이션은 확인하게 됨
 		session.setAttribute("S_ID", dbid);
 		session.setAttribute("S_name", dbname);
+		session.setAttribute("CSRF_TOKEN", UUID.randomUUID().toString()); // 변조를 방지하기 위해 임의 값으로 파라미터를 하나 더 전송
 		// 위 세션 속성은 로그인 성공하지 않은 경우 저장되지 않음
     }
 	response.sendRedirect("post_list.jsp"); //로그인 후 이동
