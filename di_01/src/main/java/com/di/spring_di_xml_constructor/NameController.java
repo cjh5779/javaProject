@@ -1,0 +1,15 @@
+package com.di.spring_di_xml_constructor;
+
+public class NameController {
+	// NameController 입장에서 nameService는 의존 관계임
+	NameService nameService;
+	
+	public NameController(NameService nameService) { // 생성자 통한 주입
+		this.nameService = nameService;
+	}
+	
+	public void show(String name) {
+		System.out.println("NameController : " + nameService.showName(name));
+	}
+	
+}
