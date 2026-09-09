@@ -11,6 +11,9 @@
 		<config>src/main/resources/application-context1_1.xml</config>
 		<config>src/main/resources/application-context2.xml</config>
 		<config>src/main/resources/application-context2_1.xml</config>
+		<config>src/main/resources/application-config.xml</config>
+		<config>src/main/resources/application-config2.xml</config>
+		<config>src/main/resources/application-context3_1.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

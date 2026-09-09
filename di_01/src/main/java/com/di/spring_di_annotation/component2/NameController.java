@@ -1,0 +1,16 @@
+package com.di.spring_di_annotation.component2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+
+@Controller
+//@Component
+public class NameController {
+	@Autowired
+	INameInterface nameService; // name 속성을 생략하는 필드 이름과 동일한 id의 bean을 찾음
+	
+	public void show(String name) {
+		System.out.println("NameController : " + nameService.showName(name));
+	}
+}
