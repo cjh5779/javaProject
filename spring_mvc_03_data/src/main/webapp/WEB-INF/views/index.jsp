@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index</title>
 </head>
 <body>
-
+	index 페이지 입니다. <br>
+	
+	<a href="/projectData/showInfo">showInfo</a> <br>
+	<a href="/projectData/showInfoMV">showInfoMV</a> <br>
+	<a href="/projectData/book/bookInfoView">bookInfoView</a> <br>
+	<a href="/projectData/book/bookInfoView2">bookInfoView2</a> <br>
 </body>
 </html>
