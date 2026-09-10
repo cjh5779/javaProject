@@ -1,4 +1,4 @@
-package com.spring_aop.xml;
+package com.spring_aop.annotation;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -6,7 +6,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class AopXMLMain {
 	public static void main(String[] args) {
 		// 스프링 컨테이너(context) 객체 생성
-		AbstractApplicationContext context = new GenericXmlApplicationContext("application-config.xml");
+		AbstractApplicationContext context = new GenericXmlApplicationContext("application-config2.xml");
 		
 		// 핵심기능 1
 		Rect rect = context.getBean("rect", Rect.class);
