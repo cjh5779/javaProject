@@ -1,6 +1,7 @@
 package com.spring_mvc.projectData;
 
 import org.springframework.stereotype.Controller;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,20 +35,17 @@ public class NewController {
 		return mv;
 	}
 	
-	@RequestMapping("/book/bookInfoView")
-	public String bookInfoView(Model model) {
-		model.addAttribute("title", "스프링 프레임워크");
-		model.addAttribute("price", 20000);
-		
-		return "book/bookInfoView";
-	}
-	
-	@RequestMapping("/book/bookInfoView2")
-	public ModelAndView bookInfoView2(ModelAndView mv) {
-		mv.addObject("title", "스프링 프레임워크");
-		mv.addObject("price", 20000);
-		mv.setViewName("/book/bookInfoView2");
-		
-		return mv;
+	// 다중 맵핑 - 표현되는 데이터는 다르지만 view가 동일할 경우 사용
+	@RequestMapping(value = {"/book/bookInfoView4", "/book/bookInfoView5"})
+	public String showBookInfo45(HttpServletRequest request, Model model) {
+	    if (request.getServletPath().equals("/book/bookInfoView4")) {
+	        model.addAttribute("title", "java");
+	        model.addAttribute("price", 35000);
+	    } else if (request.getServletPath().equals("/book/bookInfoView5")) {
+	        model.addAttribute("title", "javaFin");
+	        model.addAttribute("price", 45000);
+	    }
+	    
+	    return "book/bookInfo";
 	}
 }
