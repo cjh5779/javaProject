@@ -1,6 +1,7 @@
 package com.spring.jdbcProject.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 // import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,12 @@ import com.spring.jdbcProject.dto.*;
 @Repository
 public class MemberDAO {
 	private DataSource dataFactory;
+	
+	// 반환결과를 담을 DTO 필드를 추가 - 자동 주입되는 객체 사용 객체(한번 들어오고 변경되지 않음)
+	// 의존성 주입은 객체 생성될 때 한번 주입되기 때문에 동적으로 계속 객체가 생성되는 경우 사용 불가능
+	@Autowired(required=false)
+	@Qualifier(value="memberDTO")
+	private MemberDTO dto;
 	
 	@Autowired
 	public MemberDAO(DataSource dataSource) {
@@ -45,6 +52,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				// local block
 				String memId = rs.getString("memId");
 				String memPwd = rs.getString("memPwd");
 				String memName = rs.getString("memName");
@@ -52,7 +60,13 @@ public class MemberDAO {
 				Date memJoinDate = rs.getDate("memJoinDate");
 				
 				// MemberDTO에 담아서
+				// dto 객체 인스턴스 자동 주입 가능 ? 어노테이션 이용해서는 불가능
+				// local block 안에서는 자동 주입 불가능
+				// @Autowired(required=false)
+				// @Qualifier(value="memverDTO)
+				// MemberDTO dto = new MemberDTO();
 				MemberDTO dto = new MemberDTO();
+				// local 참조 변수는 초기화 후에 사용 가능함
 				dto.setMemId(memId);
 				dto.setMemPwd(memPwd);
 				dto.setMemName(memName);

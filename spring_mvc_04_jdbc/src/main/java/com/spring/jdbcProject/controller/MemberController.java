@@ -25,6 +25,8 @@ public class MemberController {
 	@RequestMapping("/member/memberSelect")
 	public String selectMember(Model model) {
 		// dao 반환 결과값 받는 참조변수
+		// 비지니스 로직을 처리하는 dao를 컨트롤러가 직접 접근 처리하는건 권장하지 않음
+		// ORM 방식의 비지니스 로직처리에서는 service라는 개념을 하나 추가해서 중계자 역할을 하게 함
 		ArrayList<MemberDTO> memList = memDao.memberSelect();
 		
 		model.addAttribute("memList", memList);

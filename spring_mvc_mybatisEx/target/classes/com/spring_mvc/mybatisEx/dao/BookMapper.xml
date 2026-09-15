@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- xml 파일의 문법 규칙은 mybatis-3-mapper.dtd 파일의 규칙을 따라야 함 -->
+
+<!-- 현재 mapper가 구현할 메소드를 정의 
+	 IBookDAO 추상메소드를 현재 mapper에서 구현해야 함
+-->
+<mapper namespace="com.spring_mvc.mybatisEx.dao.IBookDAO">
+	
+	<resultMap type="com.spring_mvc.mybatisEx.vo.BookVO" id="bookResult">
+		<result property="bookNo" column="bookNo"/>
+		<result property="bookName" column="bookName"/>
+		<result property="bookAuthor" column="bookAuthor"/>
+		<result property="bookPrice" column="bookPrice"/>
+		<result property="bookDate" column="bookDate"/>
+		<result property="bookStock" column="bookStock"/>
+		<result property="pubNo" column="pubNo"/>
+	</resultMap>
+	
+	<!-- 
+		태그의 id값과 인터페이스 추상메소드명이 동일
+		반환값에 대한 내용도 태그 속성으로 전달
+		여러 레코드가 반환됨 ResultMap 사용
+		한개의 레코드면 ResultType을 사용
+	-->
+	<!-- 
+		BookVO 클래스의 필드명과 book 테이블의 컬럼명이 동일해야 함
+		반환 레코드가 여러개 인 경우 List 타입의 콜렉션에 저장해서 반환
+		getAllBookList 추상메소드가 반환타입이 ArrayList 타입이므로 ArrayList 타입으로 반환됨
+	 -->
+	<select id="getAllBookList" resultMap="bookResult">
+		SELECT * FROM book ORDER BY bookNo
+	</select>
+	
+	<select id="detailViewBook" parameterType="string" resultMap="bookResult">
+        SELECT * FROM book WHERE bookNo = #{bookNo}
+    </select>
+    
+    <insert id="insertBook" parameterType="com.spring_mvc.mybatisEx.vo.BookVO">
+        INSERT INTO book (bookNo, bookName, bookAuthor, bookPrice, bookDate, bookStock, pubNo)
+        VALUES (#{bookNo}, #{bookName}, #{bookAuthor}, #{bookPrice}, #{bookDate}, #{bookStock}, #{pubNo})
+    </insert>
+    
+    <update id="updateBook" parameterType="com.spring_mvc.mybatisEx.vo.BookVO">
+        UPDATE book 
+        SET bookName = #{bookName},
+            bookAuthor = #{bookAuthor},
+            bookPrice = #{bookPrice},
+            bookDate = #{bookDate},
+            bookStock = #{bookStock},
+            pubNo = #{pubNo}
+        WHERE bookNo = #{bookNo}
+    </update>
+    
+    <delete id="deleteBook" parameterType="string">
+        DELETE FROM book WHERE bookNo = #{bookNo}
+    </delete>
+	
+</mapper>
