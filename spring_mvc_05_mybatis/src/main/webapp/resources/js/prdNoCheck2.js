@@ -10,15 +10,15 @@ $(document).ready(function() {
 		} else {
 			// 서버로 상품번호 전달 중복확인 진행
 			$.ajax({
-				type:"post",
-				url:"/mybatis/product/prdNoCheck",
-				data:{"prdNo":prdNo},
+				type:"get",
+				url:"/mybatis/product/prdNoCheck1/"+prdNo, // uri data 전송
+				//url:"/mybatis/product/prdNoCheck?prdNo="+prdNo, // 쿼리스트링 방식의 전송
 				dataType:"text",
 				success:function(result){
 					if(result=="available"){
-						alert("사용 가능한 번호입니다2");
+						alert("사용 가능한 번호입니다1");
 					} else {
-						alert("사용 불가능한 번호입니다2");
+						alert("사용 불가능한 번호입니다1");
 					}
 				},
 				error:function(){

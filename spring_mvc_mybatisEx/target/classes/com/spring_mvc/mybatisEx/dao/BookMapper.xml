@@ -58,5 +58,9 @@
     <delete id="deleteBook" parameterType="string">
         DELETE FROM book WHERE bookNo = #{bookNo}
     </delete>
+    
+    <select id="bookNoCheck" parameterType="string" resultType="int">
+		SELECT COUNT(*) FROM book WHERE bookNo = #{bookNo}
+	</select>
 	
 </mapper>

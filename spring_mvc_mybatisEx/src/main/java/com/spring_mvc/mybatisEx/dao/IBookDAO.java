@@ -10,4 +10,5 @@ public interface IBookDAO {
 	public void insertBook(BookVO book);
 	public void updateBook(BookVO book);
 	public void deleteBook(String bookNo);
+	public int bookNoCheck(String bookNo);
 }

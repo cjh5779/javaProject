@@ -7,7 +7,9 @@
 		<meta charset="UTF-8">
 		<title>productForm</title>
 		<script type="text/javascript" src="<c:url value='/js/jquery-3.7.1.min.js'/>"></script>
-		<script type="text/javascript" src="<c:url value='/js/prdNoCheck.js'/>"></script>
+		<script type="text/javascript" src="<c:url value='/js/prdNoCheck5.js'/>"></script>
+		<!-- axios 기능을 활용하려면 lib 필요 -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	</head>
 	<body>
 		<h3>상품 정보 등록</h3>

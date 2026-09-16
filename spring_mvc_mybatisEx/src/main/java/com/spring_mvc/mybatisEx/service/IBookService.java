@@ -9,4 +9,5 @@ public interface IBookService {
 	public void insertBook(BookVO book);
 	public void updateBook(BookVO book);
 	public void deleteBook(String bookNo);
+	public String bookNoCheck(String bookNo);
 }

@@ -40,4 +40,17 @@ public class BookService implements IBookService {
     public void deleteBook(String bookNo) {
         dao.deleteBook(bookNo);
     }
+
+    @Override
+    public String bookNoCheck(String bookNo) {
+        int count = dao.bookNoCheck(bookNo); 
+        
+        if (count == 0) {
+            return "available"; 
+        } else {
+            return "unavailable";
+        }
+    }
+    
+    
 }
