@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring_mvc.mybatis.dto.ProductDTO;
 import com.spring_mvc.mybatis.service.ProductService;
@@ -70,5 +72,14 @@ public class ProductController {
 	public String deleteProduct(@PathVariable String prdNo) {
 		service.deleteProduct(prdNo);
 		return "redirect:/product/listAllProduct";
+	}
+	
+	// 상품번호 중복 확인
+	// rest 형식으로 반환
+	@ResponseBody
+	@RequestMapping("/product/prdNoCheck")
+	public String prdNoCheck(@RequestParam("prdNo") String prdNo) {
+		String result = service.prdNoCheck(prdNo); // 상품번호 중복 체크 service에서 진행 결과만 반환
+		return result;
 	}
 }
