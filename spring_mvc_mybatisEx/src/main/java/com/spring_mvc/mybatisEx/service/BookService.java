@@ -1,6 +1,7 @@
 package com.spring_mvc.mybatisEx.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,11 @@ public class BookService implements IBookService {
         } else {
             return "unavailable";
         }
+    }
+    
+    @Override
+    public ArrayList<BookVO> bookSearch(HashMap<String, Object> map) {
+        return dao.bookSearch(map);
     }
     
     

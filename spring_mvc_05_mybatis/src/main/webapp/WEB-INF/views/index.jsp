@@ -14,6 +14,8 @@
 	<a href="<c:url value='/product/listAllProduct'/>">전체상품조회</a><br>
 	<a href="<c:url value='/product/newProductForm'/>">상품등록</a><br>
 	<a href="<c:url value='/product/productSearchForm1'/>">상품검색1</a><br>
+	<a href="<c:url value='/product/productSearchForm2'/>">상품검색2</a><br>
+	<a href="<c:url value='/product/productSearchForm3'/>">상품검색3</a><br>
 	
 	<h4>Ajax 연습</h4>
 	<a href="<c:url value='/loginForm'/>">로그인</a><br>

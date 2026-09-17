@@ -63,4 +63,17 @@
 		SELECT COUNT(*) FROM book WHERE bookNo = #{bookNo}
 	</select>
 	
+	<select id="bookSearch" parameterType="hashmap" resultMap="bookResult">
+    SELECT * FROM book
+    <where>
+        <if test="type != null and type == 'bookName'">
+            bookName LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type != null and type == 'bookAuthor'">
+            bookAuthor LIKE '%' || #{keyword} || '%'
+        </if>
+    </where>
+    ORDER BY bookNo ASC
+	</select>
+	
 </mapper>

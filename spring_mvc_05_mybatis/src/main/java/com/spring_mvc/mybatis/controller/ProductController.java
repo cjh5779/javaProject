@@ -127,13 +127,37 @@ public class ProductController {
 	
 	// 상품 검색 메소드 1 - ArrayList 객체를 스프링 컨테이너에게 반환하면 컨테이너는 json 형식으로 변환 후
 	// 클라이언트에게 전송 : jackson-databind 의존객체 필요
+	//@ResponseBody
+	//@RequestMapping("/product/productSearch1")
+	//public ArrayList<ProductDTO> productSearch1(@RequestParam HashMap<String, Object> map) {
+		/*public ArrayList<ProductDTO> productSearch1(@RequestParam String type,
+													@RequestParam String keyword) {*/
+	//	ArrayList<ProductDTO> prdList = service.productSearch(map);
+	//	return prdList;
+	//}
+
+	
+	@RequestMapping("/product/productSearchForm2")
+	public String viewProductSearchForm2() {
+		return "product/productSearchForm2";
+	}
+	
+	
+	// 상품 검색 메소드 2 - view 페이지 반환
 	@ResponseBody
-	@RequestMapping("/product/productSearch1")
-	public ArrayList<ProductDTO> productSearch1(@RequestParam HashMap<String, Object> map) {
+	@RequestMapping("/product/productSearch2")
+	public String productSearch2(@RequestParam HashMap<String, Object> map, Model model) {
 		/*public ArrayList<ProductDTO> productSearch1(@RequestParam String type,
 													@RequestParam String keyword) {*/
 		ArrayList<ProductDTO> prdList = service.productSearch(map);
-		return prdList;
+		model.addAttribute("prdList", prdList);
+		return "/product/productSearchResultView";
+	}
+	
+	// 상품 검색 폼 요청3
+	@RequestMapping("/product/productSearchForm3")
+	public String viewProductSearchForm3() {
+		return "product/productSearchForm3";
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.spring_mvc.mybatisEx.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,16 +64,13 @@ public class BookController {
         return "redirect:/book/listAllBook";
     }
 	
-	// 1. Ajax 방식 받기 (폼 데이터 전송)
 		@ResponseBody
 		@RequestMapping("/book/bookNoCheck1")
 		public String bookNoCheck1(@RequestParam("bookNo") String bookNo) {
-			// service에 bookNoCheck 메서드가 구현되어 있어야 합니다.
 			String result = service.bookNoCheck(bookNo); 
 			return result;
 		}
 
-		// 2. Fetch 방식 받기 (URL 경로 변수 전송)
 		@ResponseBody
 		@RequestMapping("/book/bookNoCheck2/{bookNo}")
 		public String bookNoCheck2(@PathVariable("bookNo") String bookNo) {
@@ -80,13 +78,41 @@ public class BookController {
 			return result;
 		}
 
-		// 3. Axios 방식 받기 (JSON Body 데이터 전송)
 		@ResponseBody
 		@RequestMapping("/book/bookNoCheck3")
 		public String bookNoCheck3(@RequestBody java.util.HashMap<String, String> map) {
-			// JSON 객체로 넘어온 데이터 중 "bookNo" 키의 값을 꺼냅니다.
 			String bookNo = map.get("bookNo");
 			String result = service.bookNoCheck(bookNo);
 			return result;
+		}
+		
+		@ResponseBody
+		@RequestMapping("/book/bookNoCheckAjax")
+		public String checkAjax(@RequestParam("bookNo") String bookNo) {
+		    return service.bookNoCheck(bookNo); // 사용 가능 시 "available", 중복 시 "duplicate"
+		}
+
+		@ResponseBody
+		@RequestMapping("/book/bookNoCheckFetch")
+		public String checkFetch(@RequestBody HashMap<String, String> map) {
+		    return service.bookNoCheck(map.get("bookNo"));
+		}
+
+		@ResponseBody
+		@RequestMapping("/book/bookNoCheckAxios/{bookNo}")
+		public String checkAxios(@PathVariable("bookNo") String bookNo) {
+		    return service.bookNoCheck(bookNo);
+		}
+		
+		@RequestMapping("/book/bookSearchForm")
+		public String bookSearchForm() {
+		    return "book/bookSearchForm";
+		}
+
+		@RequestMapping("/book/bookSearch")
+		public String bookSearch(@RequestParam HashMap<String, Object> map, Model model) {
+		    ArrayList<BookVO> bookList = service.bookSearch(map);
+		    model.addAttribute("bookList", bookList);
+		    return "book/bookSearchResultView";
 		}
 }
