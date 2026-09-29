@@ -43,9 +43,14 @@ public class CartService implements ICartService {
 		return dao.cartList(memId);
 	}
 
+//	@Override
+//	public void deleteCart(String cartNo) {
+//		dao.deleteCart(cartNo);
+//	}
+	
 	@Override
-	public void deleteCart(String cartNo) {
-		// TODO Auto-generated method stub
+	public void deleteCart(ArrayList<String> chkArr) {
+		dao.deleteCart(chkArr);
 		
 	}
 
@@ -54,5 +59,4 @@ public class CartService implements ICartService {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

@@ -37,6 +37,25 @@
  		WHERE p.prdNo=c.prdNo AND c.memId=#{memId}
  		ORDER BY c.cartNo	
  	</select>
+ 	
+ 	<!-- void deleteCart(String cartNo); //장바구니 상품 삭제 
+ 	<delete id="deleteCart" parameterType="string">
+ 		DELETE FROM cart
+ 		WHERE cartNo=#{cartNo}
+ 	</delete>
+ 	-->
+ 	
+ 	<!-- void deleteCart(String cartNo); //장바구니 상품 삭제  
+ 		 array에 2,21 이 넘어왔다고 가정하면
+ 		 delete from cart where cartNo in (2,21)
+ 	-->
+ 	<delete id="deleteCart" parameterType="List">
+ 		DELETE FROM cart
+ 		WHERE cartNo IN 
+ 		<foreach collection="list" item="item" index="i" open="(" separator="," close=")">
+ 			#{item}
+ 		</foreach>
+ 	</delete>
  </mapper>
  
  

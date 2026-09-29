@@ -10,6 +10,6 @@ public interface ICartService {
 	int checkPrdInCart(CartDTO dto);//특정 회원 장바구니에 동일 상품 존재 여부 확인
 	void updateQtyInCart(CartDTO dto);//기존 추가된 상품의 수량 변경
 	ArrayList<CartDTO> cartList(String memId); //특정 회원 장바구니 목록
-	void deleteCart(String cartNo); //장바구니 상품 삭제
+	void deleteCart(ArrayList<String> chkArr); //장바구니 상품 삭제
 	void updateCart(HashMap<String, Object> map);
 }

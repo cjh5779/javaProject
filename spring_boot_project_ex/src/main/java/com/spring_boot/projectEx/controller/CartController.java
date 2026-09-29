@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring_boot.projectEx.dto.CartDTO;
 import com.spring_boot.projectEx.service.CartService;
@@ -46,5 +48,20 @@ public class CartController {
 		ArrayList<CartDTO> cartList = cartService.cartList(memId);
 		model.addAttribute("cartList", cartList);
 		return "cart/cartListView";
+	}
+	
+	//장바구니 목록 삭제 요청 처리
+	@ResponseBody
+	@PostMapping("/product/deleteCart")
+	public int deleteCart(@RequestParam("delPrd") ArrayList<String> chkArr) {
+		int result = 0;
+		
+		if(chkArr != null) {
+			/*
+			 * for(String cartNo:chkArr) { cartService.deleteCart(cartNo); }
+			 */
+			result = 1;
+		}
+		return result;
 	}
 }
