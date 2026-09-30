@@ -56,7 +56,58 @@
  			#{item}
  		</foreach>
  	</delete>
- </mapper>
+ 	
+ 	<!-- void updateCart(CartDTO dto); //주문 전 장바구니 수량 변경 -->
+ 	<update id="updateCart" parameterType="com.spring_boot.projectEx.dto.CartDTO">
+ 		UPDATE cart
+ 		SET cartQty=#{cartQty}
+ 		WHERE cartNo=#{cartNo}
+ 	</update>
+ 	
+ 	<!-- public MemberDTO getMemberInfo(String memId); //주문자 정보 추출 메소드
+ 		 추출 컬럼은 필요한 컬럼만 select해서 반환되도록 구성
+ 	 -->
+ 	<select id="getMemberInfo" parameterType="string" resultType="com.spring_boot.projectEx.dto.MemberDTO">
+    	SELECT memId, memName, memHp, memZipcode, memAddress1, memAddress2
+    	FROM member
+    	WHERE memId=#{memId}
+	</select>
+	
+	<!-- void insertOrderInfo(OrderInfoDTO ordInfoDto); //주문 및 배송 정보 -->
+	<insert id="insertOrderInfo" parameterType="com.spring_boot.projectEx.dto.OrderInfoDTO">
+		INSERT INTO order_info (
+			ordNo, memId, ordReceiver, ordRcvZipcode,
+			ordRcvAddress1, ordRcvAddress2, ordRcvPhone, 
+			ordRcvMsg, ordPay
+		) VALUES (
+			#{ordNo}, #{memId}, #{ordRcvReceiver}, #{ordRcvZipcode},
+			#{ordRcvAddress1}, #{ordRcvAddress2}, #{ordRcvPhone}, 
+			#{ordRcvMsg}, #{ordPay}
+		)
+	</insert>
+	
+	<!-- public void insertOrderProduct(HashMap<String, Object> map); //주문 상품 정보 저장 -->
+	<insert id="insertOrderProduct" parameterType="hashmap">
+		INSERT INTO order_product(ordNo, prdNo, ordQty)
+			SELECT #{ordNo}, prdNo, cartQty
+			FROM cart
+			WHERE memId=#{memId}
+	</insert>
+	
+	<!-- void deleteCartAfterOrder(String memId) -->
+	<delete id="deleteCartAfterOrder" parameterType="string">
+		DELETE FROM cart
+		WHERE memId=#{memId}
+	</delete>
+	
+	<!-- ArrayList<OrderInfoDTO> orderList(String memId) -->
+	<select id="orderList" parameterType="string" resultType="com.spring_boot.projectEx.dto.OrderInfoDTO">
+		SELECT * 
+		FROM order_info 
+		WHERE memId = #{memId} 
+		ORDER BY ordNo DESC
+	</select>
+</mapper>
  
  
  

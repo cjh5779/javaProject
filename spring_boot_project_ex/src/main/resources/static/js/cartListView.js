@@ -3,6 +3,33 @@
 */
 
 $(document).ready(function() {
+	//주문 수량 변경 시 구매예정금액 변경
+	let amount = $('.amount'); //구매 예정 금액
+	let price = $('.price'); //상품 가격
+	let sum = 0;
+	
+	$.each($('.cartQty'), function(i){
+		$(this).on('keyup', function(index){
+			let qty = $(this).val();
+			
+			//구매예정금액과 총구매예정금액 변경하는 스크립트 코드 작성
+			amount[i].dataset.amount = (price[i].dataset.price * qty);
+			amount[i].innerHTML = (price[i].dataset.price * qty).toLocaleString();
+			//총 구매예정금액 계산하는 함수 호출
+			sumAmount();
+			document.getElementById('total').textContent = sum.toLocaleString();
+		});
+	});
+	
+	function sumAmount(){
+		//각 상품의 구매예정금액을 추출해서 모두 더한 결과를 sum 변수에 저장
+		//호출 시마다 새로 계산하므로 sum은 0으로 리셋 후에 연산을 진행
+		sum = 0;
+		document.querySelectorAll('.amount').forEach(function(amount, index){
+			sum += (Number)(amount.dataset.amount);
+		});
+	}
+	
     //[전체선택] 체크박스 체크한경우
     $("#allCheck").on('click', function() {
         let chk = $("#allCheck").prop("checked");

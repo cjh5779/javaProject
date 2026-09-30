@@ -10,4 +10,8 @@ public interface IProductDAO {
 	
 	//상품 CRUD는 spring_boot_mybatis 프로젝트에서 진행함
 	ProductDTO detailViewProduct(String prdNo);
+	
+	void insertProduct(ProductDTO prd);
+	void updateProduct(ProductDTO prd);
+	void deleteProduct(String prdNo);
 }

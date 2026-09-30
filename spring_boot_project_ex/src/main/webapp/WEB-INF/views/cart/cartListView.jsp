@@ -33,7 +33,7 @@
 					<c:forEach var="prd" items="${cartList }">
 			            <tr>
 			              <td><input type="checkbox" class="chkDelete" value="${prd.cartNo}"></td>
-			               <td><img src="<c:url value='/prd_images/${prd.prdImg}' />" width="30" height="20"></td>			              
+			               <td><img src="<c:url value='/prd_images/${prd.prdImg}' />" width="30" height="20"></td>	              
 			               <td>${prd.prdName }</td>
 			               <td  align="right">
 			               		<span class="price" data-price=${prd.prdPrice }>
